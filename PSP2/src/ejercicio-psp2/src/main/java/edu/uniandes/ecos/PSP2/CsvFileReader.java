@@ -28,8 +28,7 @@ public class CsvFileReader {
 			String[] attributes = line.split(";");
 
 			if (attributes != null && attributes.length == 2) {
-				t.setX(Double.parseDouble(attributes[0]));
-				t.setY(Double.parseDouble(attributes[1]));
+
 			}
 		}
 		scanner.close();

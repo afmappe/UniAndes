@@ -1,56 +1,48 @@
 package edu.uniandes.ecos.PSP2;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 
 public class Temp {
-	private ArrayList<Double> x;
-	private ArrayList<Double> y;
-	private Double sumX;
-	private Double sumY;
+	private int count;
+	private double xSum;
+	private double ySum;
+	private double xAvg;
+	private double yAvg;
+	private double xPowSum;
+	private double yPowSum;
+	private double xySum;
+	private double b0;
+	private double b1;
 
-	public Temp() {
-		x = new ArrayList<Double>();
-		y = new ArrayList<Double>();
-	}
+	public void LinearRegression(double[] xVals, double[] yVals) {
+		if (xVals != null & yVals != null & xVals.length == yVals.length) {
+			count = xVals.length;
+			xSum = Arrays.stream(xVals).map(x -> x).sum();
+			ySum = Arrays.stream(yVals).map(y -> y).sum();
+			xPowSum = Arrays.stream(xVals).map(x -> Math.pow(x, 2)).sum();
+			yPowSum = Arrays.stream(yVals).map(y -> Math.pow(y, 2)).sum();
+			xAvg = xSum / count;
+			yAvg = ySum / count;
 
-	public ArrayList<Double> getX() {
-		return x;
-	}
+			double[] xy = new double[count];
+			IntStream.range(0, count).forEach(i -> xy[i] = xVals[i] * yVals[i]);
+			xySum = Arrays.stream(xy).map(t -> t).sum();
 
-	public ArrayList<Double> getY() {
-		return y;
-	}
+			b1 = (xySum - (count * xAvg * yAvg)) / (xPowSum - (count * Math.pow(xAvg, 2)));
+			b0 = yAvg - b1 * xAvg;
 
-	public void setX(Double t) {
-		this.x.add(t);
-	}
+			double rxy = (count * xySum - (xSum * ySum))
+					/ Math.sqrt((((count * xPowSum - Math.pow(xSum, 2)) * (count * yPowSum - Math.pow(ySum, 2)))));
 
-	public void setY(Double t) {
-		this.y.add(t);
-	}
+			double r2 = Math.pow(rxy, 2);
 
-	public Double getSumX() {
-		return sumX;
-	}
-
-	public Double getSumY() {
-		return sumY;
-	}
-
-	private void setSumX() {
-		if (x.size() > 0) {
-			for (Double num : x) {
-				sumX += num;
-			}
 		}
+
 	}
 
-	private void setSumY() {
-		if (y.size() > 0) {
-			for (Double num : y) {
-				sumY += num;
-			}
-		}
+	public double Second(double b0, double b1, double xk) {
+		return b0 + b1 * xk;
 	}
-
 }

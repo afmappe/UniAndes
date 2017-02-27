@@ -1,0 +1,7 @@
+package edu.uniandes.ecos.PSP2;
+
+public class Temp {
+	public void LinearRegression(double[] xVals, double[] yVals) {
+
+	}
+}

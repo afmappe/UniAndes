@@ -18,12 +18,10 @@ public class App {
 		//
 		//
 
-		CsvFileReader file = new CsvFileReader();
-		try {
-			file.Test("C:\\Users\\afmap\\Desktop\\TestCSV.csv");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Temp t = new Temp();
+		double[] x = { 130, 650, 99, 150, 128, 302, 95, 945, 368, 961 };
+		double[] y = { 186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601 };
+
+		t.LinearRegression(x, y);
 	}
 }
