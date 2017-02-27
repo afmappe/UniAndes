@@ -1,0 +1,30 @@
+package edu.uniandes.ecos.PSP2;
+
+import java.util.ArrayList;
+
+public class Temp {
+	private ArrayList<Double> x;
+	private ArrayList<Double> y;
+
+	public Temp() {
+		x = new ArrayList<Double>();
+		y = new ArrayList<Double>();
+	}
+
+	public ArrayList<Double> getX() {
+		return x;
+	}
+
+	public ArrayList<Double> getY() {
+		return y;
+	}
+
+	public void setX(Double t) {
+		this.x.add(t);
+	}
+
+	public void setY(Double t) {
+		this.y.add(t);
+	}
+
+}
