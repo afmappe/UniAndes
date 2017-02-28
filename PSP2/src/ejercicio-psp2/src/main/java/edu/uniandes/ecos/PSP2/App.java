@@ -1,7 +1,5 @@
 package edu.uniandes.ecos.PSP2;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -9,19 +7,21 @@ import java.util.Scanner;
  *
  */
 public class App {
-	public static void main(String[] args) throws IOException {
-		// System.out.println( "Hello World!" );
-		// Scanner scanner = new Scanner(System.in);
-		//
-		// System.out.println( "Write Path" );
-		// String path = scanner.nextLine();
-		//
-		//
+	public static void main(String[] args) {
 
-		Temp t = new Temp();
-		double[] x = { 130, 650, 99, 150, 128, 302, 95, 945, 368, 961 };
-		double[] y = { 186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601 };
-
-		t.LinearRegression(x, y);
 	}
+
+	public static String getFilePath() {
+		Scanner scanner = new Scanner(System.in);
+
+		String path = null;
+		do {
+			System.out.flush();
+			System.out.println("Write path File");
+			path = scanner.nextLine();
+		} while (path == null || path.trim().length() <= 0);
+
+		return path;
+	}
+
 }
