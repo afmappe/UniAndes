@@ -1,4 +1,4 @@
-package edu.uniandes.ecos.PSP2;
+package edu.uniandes.ecos.PSP2.Business;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
