@@ -75,7 +75,7 @@ public class View implements IView {
 		int op = 0;
 		scanner = new Scanner(System.in);
 		String message = "Insert the number of the option you want to execute\n" + "1. Type the path of the file\n"
-				+ "2. Finish\n" + "3. Finish";
+				+ "2. Finish\n";
 		do {
 
 			printMessage(message);
@@ -85,7 +85,7 @@ public class View implements IView {
 				String path = getFilePath();
 				controller.execute(path);
 				break;
-			case 3:
+			case 2:
 				break;
 
 			default:
@@ -93,7 +93,7 @@ public class View implements IView {
 				break;
 			}
 
-		} while (op != 3);
+		} while (op != 2);
 		scanner.close();
 
 	}
