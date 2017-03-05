@@ -1,7 +1,9 @@
 package edu.uniandes.ecos.PSP2.App;
 
+import java.io.IOException;
 import java.util.Scanner;
 
+import edu.uniandes.ecos.PSP2.Entities.DataInfo;
 import edu.uniandes.ecos.PSP2.Interfaces.IController;
 import edu.uniandes.ecos.PSP2.Interfaces.IView;
 
@@ -82,8 +84,7 @@ public class View implements IView {
 			op = scanner.nextInt();
 			switch (op) {
 			case 1:
-				String path = getFilePath();
-				controller.execute(path);
+				temp();
 				break;
 			case 2:
 				break;
@@ -96,6 +97,21 @@ public class View implements IView {
 		} while (op != 2);
 		scanner.close();
 
+	}
+
+	private void temp() {
+		try {
+			String path = getFilePath();
+			DataInfo data = controller.execute(path);
+			String result = String.format("B0: %1f\nB1: %2f\nr: %3f\nr2: %4f\n yk: %5f\n",
+					data.getParameterB0(), data.getParameterB1(), data.getCorrelationCoefficient(),
+					data.getR2(), data.getYk());
+
+			printMessage(result);
+			System.in.read();
+		} catch (Exception e) {
+			printError(e.getMessage());
+		}
 	}
 
 }
