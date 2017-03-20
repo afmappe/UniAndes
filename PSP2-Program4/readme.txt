@@ -1,7 +1,7 @@
 (CSOF 5101) CONCEPTOS AVANZADOS EN INGENIERÍA DE SOFTWARE  
 Ejercicio Numero 4 Tamaño relativo
 Andrés Felipe Mape
-25/02/2017
+20/03/2017
 
 Requerimientos 
 Java versión 8
