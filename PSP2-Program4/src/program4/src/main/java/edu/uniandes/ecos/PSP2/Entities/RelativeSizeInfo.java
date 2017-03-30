@@ -1,6 +1,7 @@
 package edu.uniandes.ecos.PSP2.Entities;
 
 /**
+ * Datos de tamaño relativo
  * 
  * @author af.mape
  *
@@ -8,39 +9,44 @@ package edu.uniandes.ecos.PSP2.Entities;
 public class RelativeSizeInfo {
 
 	/**
-	 * 
+	 * Elementos que se deben evaluar
 	 */
 	double[] items;
 
 	/**
-	 * 
+	 * Elemento mas pequeños
 	 */
 	private double verySmall;
 
 	/**
-	 * 
+	 * Elemento pequeños
 	 */
 	private double small;
 
 	/**
-	 * 
+	 * Elemento medianos
 	 */
 	private double medium;
 
 	/**
-	 * 
+	 * Elemento grandes
 	 */
 	private double large;
 
 	/**
-	 * 
+	 * Elemento mas grandes
 	 */
 	private double veryLarge;
 
 	/**
+	 * Constructor por defecto
 	 * 
+	 * @param data
+	 *            elementos
 	 * @param average
+	 *            promedio
 	 * @param standardDeviation
+	 *            desviacion estandar
 	 */
 	public RelativeSizeInfo(double[] data, double average, double standardDeviation) {
 
@@ -59,48 +65,54 @@ public class RelativeSizeInfo {
 	}
 
 	/**
+	 * Obtiene el valor mas pequeño
 	 * 
-	 * @return
+	 * @return verySmall
 	 */
 	public double getVerySmall() {
 		return verySmall;
 	}
 
 	/**
+	 * Obtiene el valor pequeño
 	 * 
-	 * @return
+	 * @return small
 	 */
 	public double getSmall() {
 		return small;
 	}
 
 	/**
+	 * Obtiene el valor Medio
 	 * 
-	 * @return
+	 * @return medium
 	 */
 	public double getMedium() {
 		return medium;
 	}
 
 	/**
+	 * Obtiene el valor grande
 	 * 
-	 * @return
+	 * @return large
 	 */
 	public double getLarge() {
 		return large;
 	}
 
 	/**
+	 * Obtiene el valor mas grande
 	 * 
-	 * @return
+	 * @return veryLarge
 	 */
 	public double getVeryLarge() {
 		return veryLarge;
 	}
 
 	/**
+	 * Obtiene el listado de elementos
 	 * 
-	 * @return
+	 * @return items
 	 */
 	public double[] getItems() {
 		return items;
