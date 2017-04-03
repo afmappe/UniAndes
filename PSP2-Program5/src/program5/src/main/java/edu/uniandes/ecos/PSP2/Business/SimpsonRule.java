@@ -39,18 +39,33 @@ public class SimpsonRule {
 	private double w;
 
 	/**
-	 * 
+	 * Multiplicadores de la función
 	 */
 	private double[] multiplier;
 
+	/**
+	 * Obtiene le valor de x
+	 * 
+	 * @return x
+	 */
 	public double getX() {
 		return x;
 	}
 
+	/**
+	 * Obtiene le valor del grado de libertad de la funcion
+	 * 
+	 * @return dof
+	 */
 	public double getDof() {
 		return dof;
 	}
 
+	/**
+	 * Obtiene le valor del peso de la funcion
+	 * 
+	 * @return x / numSeg
+	 */
 	public double getW() {
 		return x / numSeg;
 	}
@@ -60,6 +75,11 @@ public class SimpsonRule {
 		this.dof = dof;
 	}
 
+	/**
+	 * Ejecuta el cálculo de la regla de Simpson
+	 * 
+	 * @return valor de la integral
+	 */
 	public SimpsonRuleInfo calculate() {
 
 		SimpsonRuleInfo result = new SimpsonRuleInfo();
@@ -76,20 +96,31 @@ public class SimpsonRule {
 		return result;
 	}
 
+	/**
+	 * Ejecuta el cálculo de la regla de Simpson
+	 * 
+	 * @param segments
+	 *            razon de cambio de x
+	 * @return valor de la integral
+	 */
 	private double internalCalculate(int segments) {
 
 		numSeg = segments;
 		double[] xi = generateXi();
 		double[] multiplier = generateMultiplier();
-		double[] t = calcFirst(xi);
-		double function = calcSecond();
+		double[] t = calcFirstPart(xi);
+		double function = calcSecondPart();
 		double[] fxi = calculateFx(t, function);
-		double[] r = calculateRule(fxi, multiplier);
 
-		double result = Arrays.stream(r).map(x -> x).sum();
+		double result = calculateRule(fxi, multiplier);
 		return result;
 	}
 
+	/**
+	 * Genera el arreglo con los valores de X desde 0 a Xi
+	 * 
+	 * @return Arreglo Xi
+	 */
 	private double[] generateXi() {
 		double[] xi = new double[numSeg + 1];
 		double w = getW();
@@ -102,6 +133,12 @@ public class SimpsonRule {
 		return xi;
 	}
 
+	/**
+	 * Genera el arreglo con los valores de los multiplicadores de la funcion de
+	 * Simpson
+	 * 
+	 * @return Arreglo de multiplicadores
+	 */
 	private double[] generateMultiplier() {
 		double[] result = new double[numSeg + 1];
 
@@ -116,7 +153,14 @@ public class SimpsonRule {
 		return result;
 	}
 
-	private double[] calcFirst(double[] xi) {
+	/**
+	 * Calcula el primer termino de la ecuacion
+	 * 
+	 * @param xi
+	 *            Arreglo de valores de X
+	 * @return Primer termino de la ecuacion
+	 */
+	private double[] calcFirstPart(double[] xi) {
 		double[] result = new double[xi.length];
 
 		double exp = (dof + 1) / 2;
@@ -127,7 +171,12 @@ public class SimpsonRule {
 		return result;
 	}
 
-	private double calcSecond() {
+	/**
+	 * Calcula el primer segundo termino de la ecuacion
+	 * 
+	 * @return Segundo termino de la ecuacion
+	 */
+	private double calcSecondPart() {
 		double result = 0;
 		double t = Gamma.gamma(((dof + 1) / 2));
 		double t1 = Math.pow((dof * Math.PI), 0.5);
@@ -136,24 +185,44 @@ public class SimpsonRule {
 		return result;
 	}
 
-	private double[] calculateFx(double[] t, double function) {
+	/**
+	 * Calula los valores de F(x) para cada i
+	 * 
+	 * @param t
+	 *            primer termino de la ecuacion
+	 * @param t2
+	 *            segundo termino de la ecuacion
+	 * @return valores de F(x)
+	 */
+	private double[] calculateFx(double[] t, double t2) {
 		double[] result = new double[t.length];
 
 		for (int i = 0; i < t.length; i++) {
-			result[i] = t[i] * function;
+			result[i] = t[i] * t2;
 		}
 
 		return result;
 	}
 
-	private double[] calculateRule(double[] fxi, double[] multiplier) {
-		double[] result = new double[fxi.length];
+	/**
+	 * Mutiplica W/3 por cada mutiplicador por cada F(xi) para evaluar la regla
+	 * de simpson
+	 * 
+	 * @param fxi
+	 *            los valore de x evaluados
+	 * @param multiplier
+	 *            arreglo de multiplicadores
+	 * @return Valor de la regla de simpson
+	 */
+	private double calculateRule(double[] fxi, double[] multiplier) {
+
+		double[] temp = new double[fxi.length];
 		double factor = getW() / 3;
 
 		for (int i = 0; i < fxi.length; i++) {
-			result[i] = factor * multiplier[i] * fxi[i];
+			temp[i] = factor * multiplier[i] * fxi[i];
 		}
-
+		double result = Arrays.stream(temp).map(x -> x).sum();
 		return result;
 	}
 

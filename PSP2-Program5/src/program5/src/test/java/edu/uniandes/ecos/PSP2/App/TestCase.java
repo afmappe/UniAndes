@@ -8,7 +8,6 @@ import java.nio.file.Path;
 import org.junit.Assert;
 import org.junit.Test;
 
-import edu.uniandes.ecos.PSP2.Business.FileReader;
 import edu.uniandes.ecos.PSP2.Business.Gamma;
 import edu.uniandes.ecos.PSP2.Business.SimpsonRule;
 import edu.uniandes.ecos.PSP2.Entities.SimpsonRuleInfo;
@@ -39,7 +38,7 @@ public class TestCase {
 
 	@Test
 	public void directValues() {
-				
+
 		SimpsonRule sr = new SimpsonRule(1.1, 9);
 		SimpsonRule sr1 = new SimpsonRule(1.1812, 10);
 		SimpsonRule sr2 = new SimpsonRule(2.750, 30);
@@ -53,30 +52,4 @@ public class TestCase {
 
 	}
 
-	@Test
-	public void readFile() {
-		String fileName = "Test1/TestData.csv";
-		Path path = FileReader.getResourcePath(fileName);
-		assertNotNull("Path is empty", fileName);
-
-		try {
-			String content = FileReader.fileToString(path);
-			assertNotNull("String is empty", content);
-		} catch (IOException e) {
-			Assert.fail("Test Fail");
-		}
-
-	}
-
-	@Test
-	public void fileValues() {
-		try {
-
-			Path path = FileReader.getResourcePath(FILE_TEST1);
-			
-		} catch (Exception e) {
-			Assert.fail("Test Fail");
-		}
-
-	}
 }
