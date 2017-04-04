@@ -102,7 +102,7 @@ public class View implements IView {
 
 		SimpsonRuleInfo data = controller.execute(a, b);
 
-		String response = String.format("Calculate Simpson Eule\nX: %1s\nDof: %2$.4f\nP: %3$.4f", data.getX(),
+		String response = String.format("Calculate Simpson Eule\nX: %1s\nDof: %2$.4f\nP: %3$.6f", data.getX(),
 				data.getDof(), data.getValue());
 		printMessage(response);
 

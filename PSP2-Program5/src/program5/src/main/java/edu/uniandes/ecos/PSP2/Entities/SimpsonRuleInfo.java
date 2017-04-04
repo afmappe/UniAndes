@@ -8,45 +8,50 @@ package edu.uniandes.ecos.PSP2.Entities;
 public class SimpsonRuleInfo {
 
 	/**
-	 * 		
+	 * Valor de x
 	 */
 	private double x;
 
 	/**
-	 * 		
+	 * Valor del grado de libertad
 	 */
 	private double dof;
 
 	/**
-	 * 		
+	 * Valor al evaluar la regla
 	 */
 	private double value;
 
 	/**
+	 * Obtine el valor de x
 	 * 
-	 * @return
+	 * @return x valor de x
 	 */
 	public double getX() {
 		return x;
 	}
 
 	/**
+	 * Asigna el valor a x
 	 * 
 	 * @param x
+	 *            valor de x
 	 */
 	public void setX(double x) {
 		this.x = x;
 	}
 
 	/**
+	 * Obtiene el valor del grado de libertad
 	 * 
-	 * @return
+	 * @return Valor de dof
 	 */
 	public double getDof() {
 		return dof;
 	}
 
 	/**
+	 * Asigna el valor del grado de libertad
 	 * 
 	 * @param dof
 	 */
@@ -55,16 +60,19 @@ public class SimpsonRuleInfo {
 	}
 
 	/**
+	 * Obtiene el valor del resultado
 	 * 
-	 * @return
+	 * @return value
 	 */
 	public double getValue() {
 		return value;
 	}
 
 	/**
+	 * Asigna el valor del resultado
 	 * 
 	 * @param value
+	 *            valor del resultado
 	 */
 	public void setValue(double value) {
 		this.value = value;

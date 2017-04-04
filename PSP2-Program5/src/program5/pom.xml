@@ -7,8 +7,8 @@
   <version>1.0</version>
   <name>program5</name>
   <url>http://maven.apache.org</url>
-  <build>  
-   <resources>
+  <build> 
+	<resources>
      <resource>
        <directory>src\resources</directory>
      </resource>
@@ -26,4 +26,13 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.4</version>        
+      </plugin>
+    </plugins>   
+  </reporting>
 </project>
