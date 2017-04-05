@@ -1,7 +1,7 @@
 package edu.uniandes.ecos.PSP2.Entities;
 
 /**
- * 
+ * Representa la salida de la evaluzacion de ka regla de simpson
  * @author af.mape
  *
  */
