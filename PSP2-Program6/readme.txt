@@ -16,8 +16,8 @@ Instrucciones
 Utilizando la consola como administrador sigua los siguientes pasos: 
 
 1. Utilize el comando git clone https://github.com/afmappe/UniAndes.git
-2. Ubicarse en la capeta donde se encuentra la entrega luego en la carpeta “src\program6” Ejemplo D:\Proyectos\UniAndes\PSP2-Program5\src\program6
-3. Ejecute el siguiente comando: mvn clear install
+2. Ubicarse en la capeta donde se encuentra la entrega luego en la carpeta “src\program6” Ejemplo D:\Proyectos\UniAndes\PSP2-Program6\src\program6
+3. Ejecute el siguiente comando: mvn clean install
 4. Ejecute el siguiente comando: mvn site para generar la documentacion JavaDoc
 4. Ejecute el siguiente comando: java -cp target/program6-1.0.jar edu.uniandes.ecos.PSP2.App.App
 
