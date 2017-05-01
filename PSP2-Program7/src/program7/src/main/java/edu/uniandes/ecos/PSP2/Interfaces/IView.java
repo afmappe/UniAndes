@@ -9,6 +9,13 @@ package edu.uniandes.ecos.PSP2.Interfaces;
 public interface IView {
 
 	/**
+	 * Obtine el path de un archivo
+	 * 
+	 * @return cadena de texto que representa el path de un archivo
+	 */
+	String getFilePath();
+
+	/**
 	 * Imprime errores
 	 * 
 	 * @param error

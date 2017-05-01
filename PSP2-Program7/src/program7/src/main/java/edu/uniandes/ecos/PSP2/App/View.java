@@ -2,6 +2,7 @@ package edu.uniandes.ecos.PSP2.App;
 
 import java.util.Scanner;
 
+import edu.uniandes.ecos.PSP2.Entities.DataInfo;
 import edu.uniandes.ecos.PSP2.Entities.SimpsonRuleInfo;
 import edu.uniandes.ecos.PSP2.Interfaces.IController;
 import edu.uniandes.ecos.PSP2.Interfaces.IView;
@@ -54,57 +55,64 @@ public class View implements IView {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderMenu() {
-		try {
-			int op = 0;
-			scanner = new Scanner(System.in);
-			String message = "Insert the number of the option you want to execute\n" + "1. Run Example\n"
-					+ "2. Insert values\n" + "3. Finish";
-			do {
+	public String getFilePath() {
 
-				printMessage(message);
-				op = scanner.nextInt();
-				switch (op) {
-				case 1:
-					execute(0.2, 6);
-					execute(0.45, 15);
-					execute(0.495, 4);
-					System.in.read();
-					break;
-				case 2:
-					printMessage("Write P Value");
-					double p = scanner.nextDouble();
-					printMessage("Write Dof Value");
-					double dof = scanner.nextDouble();
-					execute(p, dof);
-					System.in.read();
-					break;
-				case 3:
-					break;
-				default:
-					printMessage("Please enter a valid option");
-					break;
-				}
+		String path = null;
+		do {
+			scanner.nextLine();
+			printMessage("Write path File");
+			path = scanner.nextLine();
 
-			} while (op != 3);
-			scanner.close();
-		} catch (Exception e) {
-			printError(e.getMessage());
-		}
+		} while (path == null || path.trim().length() <= 0);
 
+		return path;
 	}
 
 	/**
-	 * Llama al controlador para ejecutar la tarea
+	 * {@inheritDoc}
 	 */
-	private void execute(double a, double b) {
+	@Override
+	public void renderMenu() {
 
-		SimpsonRuleInfo data = controller.execute(a, b);
+		int op = 0;
+		scanner = new Scanner(System.in);
+		String message = "Insert the number of the option you want to execute\n" + "1. Type the path of the file\n"
+				+ "2. Finish\n";
+		do {
 
-		String response = String.format("Calculate Simpson Eule\nX: %1$.5f\nDof: %2$.4f\nP: %3$.6f", data.getX(),
-				data.getDof(), data.getValue());
-		printMessage(response);
+			printMessage(message);
+			op = scanner.nextInt();
+			switch (op) {
+			case 1:
+				run();
+				break;
+			case 2:
+				break;
 
+			default:
+				printMessage("Please enter a valid option");
+				break;
+			}
+
+		} while (op != 2);
+		scanner.close();
+
+	}
+
+	private void run() {
+		try {
+			String path = getFilePath();
+			DataInfo data = controller.execute(path);
+			String result = String.format(
+					"rxy: %1f\nr2: %2f\nsignificance: %.12f\nB0: %4f\nB1: %5f\nYk: %6f\nRange: %7f\nUPI (70): %8f\nLPI (70); %9f\n",
+					data.getRxy(), data.getR2(), data.getSig(), data.getB0(), data.getB1(), data.getYk(), data.getRange(),
+					data.getUpi(), data.getLpi());
+
+			printMessage(result);
+			System.in.read();
+		} catch (Exception e) {
+			printError(e.getMessage());
+		}
 	}
 
 }

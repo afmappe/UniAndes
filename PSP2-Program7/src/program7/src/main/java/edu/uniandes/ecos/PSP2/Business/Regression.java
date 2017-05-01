@@ -5,14 +5,32 @@ import java.util.stream.IntStream;
 
 import edu.uniandes.ecos.PSP2.Entities.RelationDataInfo;
 
+/**
+ * 
+ * @author af.mape
+ *
+ */
 public class Regression {
 
+	/**
+	 * 
+	 * @param xVals
+	 * @param yVals
+	 * @param xk
+	 * @return
+	 */
 	public RelationDataInfo calculateEstimate(double[] xVals, double[] yVals, double xk) {
 		RelationDataInfo result = calculateLinearRegression(xVals, yVals);
 		result.setYk(xk);
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param xVals
+	 * @param yVals
+	 * @return
+	 */
 	public RelationDataInfo calculateLinearRegression(double[] xVals, double[] yVals) {
 
 		RelationDataInfo result = null;
