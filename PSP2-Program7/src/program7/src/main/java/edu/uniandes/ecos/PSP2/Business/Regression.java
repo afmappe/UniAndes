@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import edu.uniandes.ecos.PSP2.Entities.RelationDataInfo;
 
 /**
+ * Realiza los calculos relacionados con la regresion lineal
  * 
  * @author af.mape
  *
@@ -13,11 +14,15 @@ import edu.uniandes.ecos.PSP2.Entities.RelationDataInfo;
 public class Regression {
 
 	/**
+	 * Calcula la regrecion lineal y un valor yk estimado
 	 * 
 	 * @param xVals
+	 *            arreglo de valores de x
 	 * @param yVals
+	 *            arreglo de valores de y
 	 * @param xk
-	 * @return
+	 *            numero de lineas de codigo
+	 * @return informacion de la regresion
 	 */
 	public RelationDataInfo calculateEstimate(double[] xVals, double[] yVals, double xk) {
 		RelationDataInfo result = calculateLinearRegression(xVals, yVals);
@@ -26,10 +31,13 @@ public class Regression {
 	}
 
 	/**
+	 * Calcula la regrecion lineal y un valor yk estimado
 	 * 
 	 * @param xVals
+	 *            arreglo de valores de x
 	 * @param yVals
-	 * @return
+	 *            arreglo de valores de y
+	 * @return informacion de la regresion
 	 */
 	public RelationDataInfo calculateLinearRegression(double[] xVals, double[] yVals) {
 

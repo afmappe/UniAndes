@@ -16,6 +16,13 @@ package edu.uniandes.ecos.PSP2.Business;
 
 public class Gamma {
 
+	/**
+	 * Calcula el logaritmo para la funcion gama
+	 * 
+	 * @param x
+	 *            valor
+	 * @return logaritmo
+	 */
 	public static double logGamma(double x) {
 		double tmp = (x - 0.5) * Math.log(x + 4.5) - (x + 4.5);
 		double ser = 1.0 + 76.18009173 / (x + 0) - 86.50532033 / (x + 1) + 24.01409822 / (x + 2) - 1.231739516 / (x + 3)
@@ -23,6 +30,13 @@ public class Gamma {
 		return tmp + Math.log(ser * Math.sqrt(2 * Math.PI));
 	}
 
+	/**
+	 * Calcula la funcion Gamma
+	 * 
+	 * @param x
+	 *            valor de x
+	 * @return funcion Gamma
+	 */
 	public static double gamma(double x) {
 		return Math.exp(logGamma(x));
 	}
